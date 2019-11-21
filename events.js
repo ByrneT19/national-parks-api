@@ -5,7 +5,7 @@ const apiUrl = 'https://developer.nps.gov/api/v1'
 const stC = $('#js-state').val();
 
 function findPark() {
-    fetch(`${apiUrl}/${stC}&${apiKey}`)
+    fetch(`${apiUrl}/parks?parkCode=${stC}&${apiKey}`)
     .then(response => {
         if (response.ok) {
             return response.json();
