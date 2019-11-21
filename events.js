@@ -1,7 +1,7 @@
 'use strict'
 
 const apiKey = '8hXcxO2cfZCudAX4QJpcfoEy6Ikfu8xweIUImtu0'
-const apiUrl = 'https://developer.nps.gov/api/v1'
+const apiUrl = 'https://developer.nps.gov/api/v1/parks?parkCode='
 const stC = $('#js-state').val();
 
 function findPark() {
@@ -38,3 +38,4 @@ function runApi() {
 $(runApi);
 
   
+//https://developer.nps.gov/api/v1/parks?parkCode=acad&api_key=INSERT-API-KEY-HERE
