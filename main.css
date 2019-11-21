@@ -1,0 +1,44 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: sans-serif;
+    text-align: center;
+    background-image: url(images/yellowstone-national-park-1581879.jpg);
+    background-size: cover;
+    color: white;
+    background-repeat: no-repeat;
+    height: 100vh;
+}
+
+.subBut {
+    padding: 8px;
+    font-size: 25px;
+    font-weight: bold;
+    background-color: white;
+    color: black;
+    margin-top: 12px;
+}
+
+h1 {
+    font-size: 45px;
+    margin-top: 12%;
+    background-color: rgb(83, 132, 231);
+    display: inline-block;
+    padding: 6px;
+    border-radius: 10px;    
+}
+
+
+
+form {
+    margin-top: 4%;
+    font-size: 30px;
+}
+
+ #js-max-results, #js-state {
+    margin: 10px 10px;
+    padding: 6px 6px;
+    font-size: 25px;
+}

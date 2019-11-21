@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+ <html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>National Park Finder</title>
+        <meta name="description" content="An API to find national parks">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <link rel="stylesheet" href="main.css" type="text/css">
+    </head>
+    <body>
+        <header>
+            <h1>National Park Finder</h1>
+        </header>      
+        <main>
+            <div class="container">
+                <form id="search">
+                    
+                    <label for="js-state">Enter up to 3 state codes here:</label>
+                    <input type="text" name="state" id="js-state" placeholder="E.g. MI" max="3"><br>
+
+                    <label for="js-max-results">Enter your desired maximum number of results:</label>
+                    <input type="text" name="max-results" id="js-max-results" max="10" placeholder="max-entry: 10"><br>
+                    
+                    <button class="subBut" type="submit">Submit</button>
+                </form>
+                <p id="js-error-message"></p>
+            </div>
+        </main>  
+        <script src="events.js"></script>
+    </body>
+</html>
