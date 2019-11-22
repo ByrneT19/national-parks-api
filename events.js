@@ -11,7 +11,7 @@ function findPark() {
             return response.json();
         } throw new Error(response.statusText);
     })
-    .then(responseJson => console.log(JSON.stringify(responseJson)))
+    .then(responseJson => showPark(responseJson))
     .catch(err => {
         $('#js-error-message').text(`Something went wrong: ${err.message}`);
     })        
@@ -30,6 +30,10 @@ function getPark(query, maxResults=10) {
         maxResults
     }
     queryParams(params);
+}
+
+function showPark() {
+    //will use a for loop to show the relevant data in the parkResults div via .html
 }
 
 function watchForm() {
