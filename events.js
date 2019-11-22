@@ -35,7 +35,7 @@ function getPark(query, maxResults=10) {
 function showPark(responseJson) {
     let i = responseJson;
     for(i = 0; responseJson.data.length; i++) {
-        ('#park-list').append(
+        $('#park-list').append(
         `<li class=actualResults>
         <h3><a href="${responseJson.data[i].url}" target="_blank">${responseJson.data[i].fullName}</a></h3>
         <p>States: ${responseJson.data[i].states}</p>

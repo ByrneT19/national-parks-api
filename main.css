@@ -5,11 +5,19 @@
 body {
     font-family: sans-serif;
     text-align: center;
-    background-image: url(images/yellowstone-national-park-1581879.jpg);
-    background-size: cover;
     color: white;
+    height: 100vh;
+}
+
+.container {
+    background-image: url(images/yellowstone-national-park-1581879.jpg);
+    background-size: contain;
     background-repeat: no-repeat;
     height: 100vh;
+    max-height: 600px;
+    width: 100vh;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .subBut {
@@ -19,6 +27,7 @@ body {
     background-color: white;
     color: black;
     margin-top: 12px;
+    margin-bottom: 50px;
 }
 
 h1 {
@@ -49,4 +58,9 @@ form {
 }
 .restart {
     display: none;
+}
+
+#park-list {
+    list-style-type: none;
+    color: black;
 }
