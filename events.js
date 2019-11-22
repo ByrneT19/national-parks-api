@@ -8,10 +8,11 @@ function findPark() {
     fetch(`${apiUrl}${stC}&api_key=${apiKey}`)
     .then(response => {
         if (response.ok) {
-            return response.json();
+            return response.json()
+            .then(responseJson => showPark(responseJson));
         } throw new Error(response.statusText);
     })
-    .then(responseJson => showPark(responseJson))
+    // .then(responseJson => showPark(responseJson))
     .catch(err => {
         $('#js-error-message').text(`Something went wrong: ${err.message}`);
     })        
@@ -45,7 +46,7 @@ function newSearch() {
 
 function watchForm() {
     $('#search').on('submit', function(e) {
-      e.event.preventDefault();
+      e.preventDefault();
       console.log(e);
       const stC = $('#js-state').val().toUpperCase;
       const maxResults = $('#js-max-results').val();
