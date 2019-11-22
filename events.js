@@ -33,6 +33,7 @@ function getPark(query, maxResults=10) {
 }
 
 function showPark(responseJson) {
+    let i = responseJson;
     for(i = 0; responseJson.data.length; i++) {
         ('#park-list').append(
         `<li class=actualResults>
