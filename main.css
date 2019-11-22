@@ -43,6 +43,10 @@ form {
     font-size: 25px;
 }
 
+#js-error-message {
+    font-size: 20px;
+    letter-spacing: 1px;
+}
 .restart {
     display: none;
 }

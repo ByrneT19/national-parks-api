@@ -21,13 +21,16 @@
                     <input type="text" name="state" id="js-state" placeholder="E.g. MI" max="3"><br>
 
                     <label for="js-max-results">Enter your desired number of results:</label>
-                    <input type="text" name="max-results" id="js-max-results" max="10" placeholder="max-entry: 10"><br>
+                    <input type="number" name="max-results" id="js-max-results" max="10" placeholder="max-entry: 10"><br>
                     
                     <button class="subBut" type="submit">Submit</button>
                 </form>
                 <p id="js-error-message"></p>
             </div>
             <div class="parkResults">
+                <ul id="park-list">
+
+                </ul>
                 <button class="restart">New Search</button>
             </div>
         </main>  

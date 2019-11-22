@@ -1,18 +1,17 @@
 'use strict'
 
 const apiKey = '8hXcxO2cfZCudAX4QJpcfoEy6Ikfu8xweIUImtu0'
-const apiUrl = 'https://developer.nps.gov/api/v1/parks?parkCode='
+const apiUrl = 'https://developer.nps.gov/api/v1/parks?stateCode='
 // const stC = $('#js-state').val().toUpperCase();
 
-function findPark() {
+function findPark(stC) {
     fetch(`${apiUrl}${stC}&api_key=${apiKey}`)
     .then(response => {
-        if (response.ok) {
-            return response.json()
-            .then(responseJson => showPark(responseJson));
-        } throw new Error(response.statusText);
+        if (!response.ok) {
+            throw new Error(response.statusText)
+        } return response.json();
     })
-    // .then(responseJson => showPark(responseJson))
+    .then(responseJson => showPark(responseJson))
     .catch(err => {
         $('#js-error-message').text(`Something went wrong: ${err.message}`);
     })        
@@ -33,9 +32,20 @@ function getPark(query, maxResults=10) {
     queryParams(params);
 }
 
-function showPark() {
-    //will use a for loop to show the relevant data in the parkResults div via .append and will remove the form div 
-    //'.container' from the body and show the restart button
+function showPark(responseJson) {
+    for(i = 0; responseJson.data.length; i++) {
+        ('#park-list').append(
+        `<li class=actualResults>
+        <h3><a href="${responseJson.data[i].url}" target="_blank">${responseJson.data[i].fullName}</a></h3>
+        <p>States: ${responseJson.data[i].states}</p>
+        <p class="details">${responseJson.data[i].description}</p>
+        <p class="details">${responseJson.data[i].weatherInfo}</p>
+        </li>`
+        )
+    }
+    $('#js-state').empty();
+    $('#js-max-results').empty();
+    $('.restart').show();
 }
 
 function newSearch() {
@@ -48,14 +58,16 @@ function watchForm() {
     $('#search').on('submit', function(e) {
       e.preventDefault();
       console.log(e);
-      const stC = $('#js-state').val().toUpperCase;
+      const stC = $('#js-state').val().toUpperCase();
       const maxResults = $('#js-max-results').val();
-      getPark(stC, maxResults);
+    //   getPark(stC, maxResults);
+       findPark(stC, maxResults);
     })
   }
 
 function runApi() {
     watchForm();
+    // findPark();
 }
 
 $(runApi);
