@@ -33,7 +33,14 @@ function getPark(query, maxResults=10) {
 }
 
 function showPark() {
-    //will use a for loop to show the relevant data in the parkResults div via .html
+    //will use a for loop to show the relevant data in the parkResults div via .append and will remove the form div 
+    //'.container' from the body and show the restart button
+}
+
+function newSearch() {
+    $('#restart').on('click', '#restart', function() {
+        location.reload();
+    })
 }
 
 function watchForm() {
