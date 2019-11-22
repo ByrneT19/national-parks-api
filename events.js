@@ -29,14 +29,16 @@ function getPark(query, maxResults=10) {
         stateCode: query,
         maxResults
     }
+    queryParams(params);
 }
 
 function watchForm() {
-    $('#search').on('submit', function() {
-      event.preventDefault();
+    $('#search').on('submit', function(e) {
+      e.event.preventDefault();
+      console.log(e);
       const stC = $('#js-state').val().toUpperCase;
       const maxResults = $('#js-max-results').val();
-        getPark(stC, maxResults);
+      getPark(stC, maxResults);
     })
   }
 
