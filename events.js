@@ -2,10 +2,10 @@
 
 const apiKey = '8hXcxO2cfZCudAX4QJpcfoEy6Ikfu8xweIUImtu0'
 const apiUrl = 'https://developer.nps.gov/api/v1/parks?stateCode='
-// const stC = $('#js-state').val().toUpperCase();
+const stC = $('#js-state').val().toUpperCase();
 
-function findPark(stC) {
-    fetch(`${apiUrl}${stC}&api_key=${apiKey}`)
+function findPark(stC, maxResults) {
+    fetch(`${apiUrl}${stC}&limit=${maxResults}&api_key=${apiKey}`)
     .then(response => {
         if (!response.ok) {
             throw new Error(response.statusText)
@@ -55,14 +55,14 @@ function watchForm() {
       console.log(e);
       const stC = $('#js-state').val().toUpperCase();
       const maxResults = $('#js-max-results').val();
-    //   getPark(stC, maxResults);
+    //   getPark(maxResults);
        findPark(stC, maxResults);
     })
   }
 
 function runApi() {
     watchForm();
-    // findPark();
+    // getPark(maxResults)
 }
 
 $(runApi);
@@ -70,3 +70,4 @@ $(runApi);
   
 //https://developer.nps.gov/api/v1/parks?parkCode=acad&api_key=INSERT-API-KEY-HERE
 //stC.toUpperCase
+//fetch(`${apiUrl}${stC}&limit=${maxResults}&api_key=${apiKey}`)
