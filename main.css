@@ -56,9 +56,6 @@ form {
     font-size: 20px;
     letter-spacing: 1px;
 }
-.restart {
-    display: none;
-}
 
 #park-list {
     list-style-type: none;

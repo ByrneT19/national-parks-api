@@ -33,6 +33,8 @@ function getPark(query, maxResults=10) {
 }
 
 function showPark(responseJson) {
+    $('#js-state').empty();
+    $('#js-max-results').empty();
     let i = responseJson;
     for(i = 0; responseJson.data.length; i++) {
         $('#park-list').append(
@@ -44,15 +46,7 @@ function showPark(responseJson) {
         </li>`
         )
     }
-    $('#js-state').empty();
-    $('#js-max-results').empty();
-    $('.restart').show();
-}
-
-function newSearch() {
-    $('#restart').on('click', '#restart', function() {
-        location.reload();
-    })
+   
 }
 
 function watchForm() {
