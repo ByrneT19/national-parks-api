@@ -2,7 +2,7 @@
 
 const apiKey = '8hXcxO2cfZCudAX4QJpcfoEy6Ikfu8xweIUImtu0'
 const apiUrl = 'https://developer.nps.gov/api/v1/parks?stateCode='
-const stC = $('#js-state').val().toUpperCase();
+const stC = $('#js-state').val()//.toUpperCase().split(',');
 
 function findPark(stC, maxResults) {
     fetch(`${apiUrl}${stC}&limit=${maxResults}&api_key=${apiKey}`)
@@ -17,7 +17,7 @@ function findPark(stC, maxResults) {
     })        
 }
 
-function queryParams(params) {
+/*function queryParams(params) {
     const query = Object.keys(params)
     .map(key => `${encodeURIComponent(key)}=${encodeURIComponent(params[key])}`)
     return query.join('&');
@@ -30,7 +30,7 @@ function getPark(query, maxResults=10) {
         maxResults
     }
     queryParams(params);
-}
+}*/
 
 function showPark(responseJson) {
     $('#js-state').empty();
@@ -39,21 +39,20 @@ function showPark(responseJson) {
     for(i = 0; responseJson.data.length; i++) {
         $('#park-list').append(
         `<li class=actualResults>
-        <h3><a href="${responseJson.data[i].url}" target="_blank">${responseJson.data[i].fullName}</a></h3>
+        <h3><a href="${responseJson.data[i].url == null ? '' : responseJson.data[i].url}" target="_blank">${responseJson.data[i].fullName}</a></h3>
         <p>States: ${responseJson.data[i].states}</p>
         <p class="details">${responseJson.data[i].description}</p>
         <p class="details">${responseJson.data[i].weatherInfo}</p>
         </li>`
         )
     }
-   
 }
 
 function watchForm() {
     $('#search').on('submit', function(e) {
       e.preventDefault();
       console.log(e);
-      const stC = $('#js-state').val().toUpperCase();
+      const stC = $('#js-state').val().toUpperCase()//.split(',');
       const maxResults = $('#js-max-results').val();
     //   getPark(maxResults);
        findPark(stC, maxResults);
