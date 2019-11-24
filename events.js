@@ -5,7 +5,7 @@ const apiUrl = 'https://developer.nps.gov/api/v1/parks?stateCode='
 const stC = $('#js-state').val();
 const maxResults = $('#js-max-results').val();
 
-function findPark(stC, maxResults) {
+function findPark(stC, maxResults = 10) {
     fetch(`${apiUrl}${stC}&limit=${maxResults}&api_key=${apiKey}`)
     .then(response => {
         // debugger;
@@ -26,16 +26,14 @@ function findPark(stC, maxResults) {
     return query.join('&');
 }
 
-function getPark(query, maxResults=10) {
+function getPark(maxResults=10) {
     const params = {
-        key: apiKey,
-        stateCode: query,
-        maxResults
+        limit: maxResults
     }
-    queryParams(params);
-}*/
+    findPark(params);
+}
 
-/*function emptyInput() {
+function emptyInput() {
     $("#js-state").val("");
     $("#js-max-results").val("");
   }*/
