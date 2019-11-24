@@ -8,7 +8,6 @@ const maxResults = $('#js-max-results').val();
 function findPark(stC, maxResults = 10) {
     fetch(`${apiUrl}${stC}&limit=${maxResults}&api_key=${apiKey}`)
     .then(response => {
-        // debugger;
         if (!response.ok) {
             throw new Error(response.statusText)
         } 
@@ -20,54 +19,22 @@ function findPark(stC, maxResults = 10) {
     })        
 }
 
-/*function queryParams(params) {
-    const query = Object.keys(params)
-    .map(key => `${encodeURIComponent(key)}=${encodeURIComponent(params[key])}`)
-    return query.join('&');
-}
-
-function getPark(maxResults=10) {
-    const params = {
-        limit: maxResults
-    }
-    findPark(params);
-}
-
-function emptyInput() {
-    $("#js-state").val("");
-    $("#js-max-results").val("");
-  }*/
-
 function showPark(responseJson) {
     $('#js-state').val("");
     $('#js-max-results').val("");
     $('#park-list').empty();
     let i = null;
-    // debugger;
     for(i = 0; i < responseJson.data.length; i++) {
-        // debugger;
         $('#park-list').append(
         `<li class=actualResults>
         <h3><a href="${responseJson.data[i].url == null ? '' : responseJson.data[i].url}" target="_blank">${responseJson.data[i].fullName}</a></h3>
         <p>States: ${responseJson.data[i].states}</p>
         <p class="details">${responseJson.data[i].description}</p>
-        <p class="details">${responseJson.data[i].weatherInfo}</p>
-        
+        <p class="details">${responseJson.data[i].weatherInfo}</p>        
         </li>`
         )
     }
 }
-
-/*function watchForm() {
-    $('#search').on('submit', function(e) {
-      e.preventDefault();
-      console.log(e);
-      const stC = $('#js-state').val().toUpperCase()//.split(',');
-      const maxResults = $('#js-max-results').val();
-    //   getPark(maxResults);
-       findPark(stC, maxResults);
-    })
-  }*/
 
 function watchForm() {
     $('#search').on('submit', function(e) {
@@ -75,14 +42,13 @@ function watchForm() {
     console.log(e);
       const stC = $('#js-state').val().toUpperCase().split(' ', 3);
       const maxResults = $('#js-max-results').val();
-    //   getPark(maxResults);
         if(stC && maxResults){
             findPark(stC, maxResults);
             } else {
                 alert("error in form")
             }
         })
-        // $('#park-list').empty();
+        
 }
 
 function runApi() {
