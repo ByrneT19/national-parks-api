@@ -73,7 +73,7 @@ function watchForm() {
     $('#search').on('submit', function(e) {
     e.preventDefault();
     console.log(e);
-      const stC = $('#js-state').val().toUpperCase().split(',');
+      const stC = $('#js-state').val().toUpperCase().split(' ', 3);
       const maxResults = $('#js-max-results').val();
     //   getPark(maxResults);
         if(stC && maxResults){
