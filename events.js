@@ -1,6 +1,6 @@
 'use strict'
 
-const apiKey = '8hXcxO2cfZCudAX4QJpcfoEy6Ikfu8xweIUImtu0'
+const apiKey = '{INSERT YOUR API KEY HERE}'
 const apiUrl = 'https://developer.nps.gov/api/v1/parks?stateCode='
 const stC = $('#js-state').val();
 const maxResults = $('#js-max-results').val();
